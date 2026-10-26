@@ -17,7 +17,7 @@ class _FormularioExemploState extends State<FormularioExemplo> {
   void _submeterFormulario() {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Processando dados de $_nomeanimal...')),
+        SnackBar(content: Text('Processando dados de ${_nomeanimal.text}'), backgroundColor: Colors.green,),
       );
     }
   }
@@ -81,7 +81,7 @@ class _FormularioExemploState extends State<FormularioExemplo> {
                 ),
                 validator: (value) {
                   
-                  if (value == null) {
+                  if (value == null || value.isEmpty) {
                     return 'Informe uma idade correta!';
                   }
                   return null;
@@ -106,6 +106,7 @@ class _FormularioExemploState extends State<FormularioExemplo> {
               ElevatedButton(
                 onPressed: _submeterFormulario,
                 child: const Text('Cadastrar Pet'),
+               
               ),
             ],
           ),
